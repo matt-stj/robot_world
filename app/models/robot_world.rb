@@ -1,6 +1,4 @@
 require 'yaml/store'
-require_relative 'robot'
-
 
 class RobotWorld
 
@@ -66,6 +64,21 @@ class RobotWorld
     robots = raw_robots.map { |data| Robot.new(data) }
     array_of_ages = robots.map {|robot| robot.birthday.to_i}
     average = (array_of_ages.inject(0, :+))/(array_of_ages.size)
+  end
+
+  def self.delete_all
+    database.transaction do
+      database['robots'] = []
+      database['total'] = 0
+    end
+  end
+
+  def self.database
+    if ENV["RACK_ENV"] == 'test'
+      @database ||= YAML::Store.new("db/robot_world_test")
+    else
+      @database ||= YAML::Store.new("db/robot_world")
+    end
   end
 
 end

@@ -62,4 +62,10 @@ class RobotWorld
     end
   end
 
+  def self.average_age
+    robots = raw_robots.map { |data| Robot.new(data) }
+    array_of_ages = robots.map {|robot| robot.birthday.to_i}
+    average = (array_of_ages.inject(0, :+))/(array_of_ages.size)
+  end
+
 end

@@ -1,16 +1,24 @@
-<h1>Robot Directory</h1>
+<div class="text-center block-center">
+  <h1>Robot Directory</h1>
 
-<% @robots.each do |robot| %>
-  <ul>
-    <li>
-      <%= robot.id %>
-      <a href="/robots/<%= robot.id %>"><%= robot.name %></a>
-      <a href="/robots/<%= robot.id %>/edit">Edit</a>
-    </ul>
-  <form action="/robots/<%= robot.id  %>/delete" method="post">
-        <input type="hidden" name="_method" value="delete">
-        <input type="submit" value="Delete">
-      </form>
-<% end %>
+  <% @robots.each do |robot| %>
+    <div class="container row">
+      <div class="well col-md-6 col-md-offset-3">
+        <div class="row">
+          <div class="col-md-1">
+            <img src="https://robohash.org/<%= robot.avatar %>?size=100x100">
+          </div>
+          <h1 class="col-md-2 col-md-offset-2"><a href="/robots/<%= robot.id %>"><%= robot.name %></a></h1>
+            <a class="btn btn-warning col-md-2 col-md-offset-4" href="/robots/<%= robot.id %>/edit">Edit</a>
+          <form action="/robots/<%= robot.id  %>/delete" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <input class="btn btn-danger col-md-2 col-md-offset-4" type="submit" value="Delete">
+          </form>
+        </div>
+        </div>
+      </div>
 
-<a href="/">Go Back</a>
+  <% end %>
+
+  <a href="/">Go Back</a>
+</div>

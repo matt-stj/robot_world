@@ -43,6 +43,11 @@ class RobotWorldApp < Sinatra::Base
     redirect '/robots'
   end
 
+  get '/dashboard' do
+    @avg_age = RobotWorld.average_age
+    erb :dashboard
+  end
+
   not_found do
     erb :error
   end

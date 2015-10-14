@@ -1,19 +1,45 @@
 ---
 robots:
-- id: 1
+- age: kjh
   name: FIRST
   city: kjh
   state: kuh
   avatar: kjh
-  birthday: kjh
   date_hired: kjhk
   department: j
-- id: 2
+- age: kjh
   name: 2nd bot
   city: kj
   state: hkjh
   avatar: kjh
-  birthday: kjh
   date_hired: jkh
   department: hk
-total: 3
+- age: ''
+  name: Bot
+  city: Pueblo
+  state: 
+  avatar: Steve
+  date_hired: lk
+  department: lkj
+- age: '25'
+  name: robo
+  city: jhg
+  state: CO
+  avatar: jhg
+  date_hired: jhg
+  department: jhg
+- age: ''
+  name: ''
+  city: ''
+  state: ''
+  avatar: ''
+  date_hired: ''
+  department: ''
+- age: asd
+  name: asd
+  city: asd
+  state: ''
+  avatar: asd
+  date_hired: asd
+  department: asd
+total: 12

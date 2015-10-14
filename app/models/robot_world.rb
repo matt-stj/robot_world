@@ -13,12 +13,12 @@ class RobotWorld
       database['robots'] ||= []
       database['total'] ||= 0
       database['total'] += 1
-      database['robots'] << { "id"          => database['total'],
+      database['robots'] << { "age"          => database['total'],
                               "name"        => robot['name'],
                               "city"        => robot['city'],
                               "state"       => robot['state'],
                               "avatar"      => robot['avatar'],
-                              "birthday"    => robot['birthday'],
+                              "age"    => robot['age'],
                               "date_hired"  => robot['date_hired'],
                               "department"  => robot['department']
                             }
@@ -35,31 +35,36 @@ class RobotWorld
     raw_robots.map { |data| Robot.new(data) }
   end
 
-  def self.raw_robot(id)
-    raw_robots.find { |robot| robot["id"] == id }
+  def self.raw_robot(age)
+    raw_robots.find { |robot| robot["age"] == age }
   end
 
-  def self.find(id)
-    Robot.new(raw_robot(id))
+  def self.find(age)
+    Robot.new(raw_robot(age))
   end
 
-  def self.update(id, data)
+  def self.update(age, data)
     database.transaction do
-      target = database['robots'].find {|robot| robot["id"] == id}
+      target = database['robots'].find {|robot| robot["age"] == age}
       target['name'] = data[:name]
       target['city'] = data[:city]
       target['state'] = data[:state]
       target['avatar'] = data[:avatar]
-      target['birthday'] = data[:birthday]
+      target['age'] = data[:age]
       target['date_hired'] = data[:date_hired]
       target['department'] = data[:department]
     end
   end
 
-  def self.delete(id)
+  def self.delete(age)
     database.transaction do
-      target = database['robots'].delete_if { |robot| robot["id"] == id }
+      target = database['robots'].delete_if { |robot| robot["age"] == age }
     end
+  end
+
+  def self.avg_age
+    robots = raw_robots.map { |data| Robot.new(data) }
+    p robots.map {|robot| robot.name}
   end
 
 end

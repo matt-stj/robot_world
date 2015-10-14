@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='UTF-8' />
+    <title>Robot World</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/application.css">
+  </head>
+  <nav class='navbar navbar-default navbar-static-top'>
+      <a href='/' class='navbar-brand'>Robot World</a>
+        <ul class='nav navbar-nav active dropdown pull-right'>
+          <li><a href="/robots"><span class="glyphicon glyphicon-list"> Robots</a></li>
+          <li><a href = "/robots/new"><span class="glyphicon glyphicon-plus"></span> New Robot</a></li>
+        </ul>
+    </nav>
+  <body>
+    <div class="container">
+      <%= yield %>
+    </div>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src='js/bootstrap.js'></script>
+  </body>
+</html>

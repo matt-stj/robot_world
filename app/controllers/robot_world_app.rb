@@ -2,7 +2,7 @@ require 'models/robot_world'
 
 class RobotWorldApp < Sinatra::Base
   set :root, File.expand_path("..", __dir__)
-  # fuck this line
+  # fuck this shittys line
   set :method_override, true
 
   get '/' do
@@ -41,6 +41,11 @@ class RobotWorldApp < Sinatra::Base
   put '/robots/:id' do |id|
     RobotWorld.update(id.to_i, params[:robot])
     redirect '/robots'
+  end
+
+  get '/dashboard' do
+    @avg_age = RobotWorld.avg_age
+    erb :dashboard
   end
 
   not_found do

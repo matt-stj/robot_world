@@ -1,0 +1,38 @@
+<h1>Edit</h1>
+
+<form action="/robots/<%= @robot.id %>" method="post">
+  <p>Build a new robot:</p>
+
+  <label>Name</label>
+  <input type='text' placeholder="<%= @robot.name %>" name='robot[name]'/>
+  <br>
+
+  <label>City</label>
+  <input type='text' placeholder="<%= @robot.city %>" name='robot[city]'/>
+  </br>
+
+  <label>State</label>
+  <input type='text' placeholder="<%= @robot.state %>" name='robot[state]'/>
+  </br>
+
+  <label>Avatar</label>
+  <input type='text' placeholder="<%= @robot.avatar %>" name='robot[avatar]'/>
+  </br>
+  </br>
+
+  <label>Birthday</label>
+  <input type='text' placeholder="<%= @robot.birthday %>" name='robot[birthday]'/>
+  </br>
+
+  <label>Date Hired</label>
+  <input type='text' placeholder="<%= @robot.date_hired %>" name='robot[date_hired]'/>
+  </br>
+
+  <label>Department</label>
+  <input type='text' placeholder="<%= @robot.department %>" name='robot[department]'/>
+  </br>
+</br>
+
+  <input type="hidden" name="_method" value="PUT" />
+  <input type='submit' value='Submit'/>
+</form>

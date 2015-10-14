@@ -1,0 +1,19 @@
+---
+robots:
+- id: 1
+  name: FIRST
+  city: kjh
+  state: kuh
+  avatar: kjh
+  birthday: kjh
+  date_hired: kjhk
+  department: j
+- id: 2
+  name: 2nd bot
+  city: kj
+  state: hkjh
+  avatar: kjh
+  birthday: kjh
+  date_hired: jkh
+  department: hk
+total: 3

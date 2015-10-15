@@ -6,8 +6,12 @@ class NewRobotTest < FeatureTest
     visit "/robots/new"
     assert_equal "/robots/new", current_path
 
-    fill_in("robot[name]", with: "Wall-E")
-    fill_in("robot[city]", with: "Mars")
+    fill_in("robot[name]", with:       "Wall-E")
+    fill_in("robot[state]", with:      "Space")
+    fill_in("robot[avatar]", with:     "Bob")
+    fill_in("robot[birthday]", with:   "4/5/2004")
+    fill_in("robot[date_hired]", with: "10/12/15")
+    fill_in("robot[department]", with: "cleaner")
 
     click_button('Submit')
 
@@ -15,8 +19,18 @@ class NewRobotTest < FeatureTest
 
     within(".directory") do
       assert page.has_content?("Wall-E")
-      assert page.has_content?("Mars")
     end
+
+    visit "robots/1"
+    assert_equal "/robots/1", current_path
+
+    within(".table") do
+      assert page.has_content?("Space")
+      assert page.has_content?("4/5/2004")
+      assert page.has_content?("10/12/15")
+      assert page.has_content?("cleaner")
+    end
+
   end
 
 end

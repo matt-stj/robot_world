@@ -21,10 +21,10 @@ class DeleteRobotTest < FeatureTest
 
     click_button('Delete')
 
-    assert_equal "/tasks", current_path
+    assert_equal "/robots", current_path
 
-    within(".panel-body") do
-      refute page.has_content?("The task title.")
+    within(".directory") do
+      refute page.has_content?("Wall-E.")
     end
   end
 

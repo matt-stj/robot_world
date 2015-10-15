@@ -1,7 +1,12 @@
 <h1><%= @robot.name %></h1>
+<<<<<<< HEAD
 <img src="https://robohash.org/<%= @robot.avatar %>">
+=======
+>>>>>>> secondary
 
+<img src="https://robohash.org/<%= @robot.avatar %>?size=150x150">
 
+<<<<<<< HEAD
 <table>
   <tr>
     <th>City</th>
@@ -17,6 +22,28 @@
     <td><%= @robot.date_hired %></td>
     <td><%= @robot.department %></td>
   </tr>
+=======
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>City</th>
+        <th>State</th>
+        <th>Age</th>
+        <th>Date Hired</th>
+        <th>Department</th>
+      </tr>
+    </thead>
+  <tbody>
+    <tr>
+      <td><%= @robot.city %></td>
+      <td><%= @robot.state %></td>
+      <td><%= @robot.birthday %></td>
+      <td><%= @robot.date_hired %></td>
+      <td><%= @robot.department %></td>
+    </tr>
+  </tbody>
+>>>>>>> secondary
 </table>
 
 <br>

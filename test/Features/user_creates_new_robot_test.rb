@@ -21,8 +21,8 @@ class NewRobotTest < FeatureTest
       assert page.has_content?("Wall-E")
     end
 
-    visit "robots/1"
-    assert_equal "/robots/1", current_path
+    visit "robots/#{RobotWorld.all.first.id}"
+    assert_equal "/robots/#{RobotWorld.all.first.id}", current_path
 
     within(".table") do
       assert page.has_content?("Space")

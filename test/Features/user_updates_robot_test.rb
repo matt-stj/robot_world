@@ -12,8 +12,8 @@ class UpdateRobotTest < FeatureTest
                  "department"  => "cleaner"
               })
 
-    visit "/robots/1/edit"
-    assert_equal "/robots/1/edit", current_path
+    visit "/robots/#{RobotWorld.all.first.id}/edit"
+    assert_equal "/robots/#{RobotWorld.all.first.id}/edit", current_path
 
     fill_in("robot[name]", with:       "Wall-E (updated)")
     fill_in("robot[state]", with:      "Space (updated)")
@@ -29,8 +29,8 @@ class UpdateRobotTest < FeatureTest
       assert page.has_content?("Wall-E (updated)")
     end
 
-    visit "/robots/1"
-    assert_equal "/robots/1", current_path
+    visit "/robots/#{RobotWorld.all.first.id}"
+    assert_equal "/robots/#{RobotWorld.all.first.id}", current_path
 
     within('.table') do
       assert page.has_content?("Space (updated)")

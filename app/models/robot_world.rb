@@ -3,24 +3,19 @@ require 'yaml/store'
 class RobotWorld
 
   def self.database
-    @database ||= YAML::Store.new("db/robot_world")
+    if ENV["RACK_ENV"] == "test"
+      @database ||= Sequel.sqlite("db/robot_world_test.sqlite3")
+    else
+      @database ||= Sequel.sqlite("db/robot_world_development.sqlite3")
+    end
+  end
+
+  def self.dataset
+    database.from(:robots)
   end
 
   def self.create(robot)
-    database.transaction do
-      database['robots'] ||= []
-      database['total'] ||= 0
-      database['total'] += 1
-      database['robots'] << { "id"          => database['total'],
-                              "name"        => robot['name'],
-                              "city"        => robot['city'],
-                              "state"       => robot['state'],
-                              "avatar"      => robot['avatar'],
-                              "birthday"    => robot['birthday'],
-                              "date_hired"  => robot['date_hired'],
-                              "department"  => robot['department']
-                            }
-    end
+    dataset.insert(robot)
   end
 
   def self.raw_robots
@@ -30,34 +25,22 @@ class RobotWorld
   end
 
   def self.all
-    raw_robots.map { |data| Robot.new(data) }
-  end
-
-  def self.raw_robot(id)
-    raw_robots.find { |robot| robot["id"] == id }
+    robots = dataset.to_a
+    robots.map {|robot| Robot.new(robot)}
   end
 
   def self.find(id)
-    Robot.new(raw_robot(id))
+    robot = dataset.where(:id => id).to_a.first
+    Robot.new(robot)
   end
 
   def self.update(id, data)
-    database.transaction do
-      target = database['robots'].find {|robot| robot["id"] == id}
-      target['name'] = data[:name]
-      target['city'] = data[:city]
-      target['state'] = data[:state]
-      target['avatar'] = data[:avatar]
-      target['birthday'] = data[:birthday]
-      target['date_hired'] = data[:date_hired]
-      target['department'] = data[:department]
-    end
+    robot = dataset.where(:id => id)
+    robot.update(data)
   end
 
   def self.delete(id)
-    database.transaction do
-      target = database['robots'].delete_if { |robot| robot["id"] == id }
-    end
+    dataset.where(:id => id).delete
   end
 
   def self.average_age
@@ -78,18 +61,7 @@ class RobotWorld
   end
 
   def self.delete_all
-    database.transaction do
-      database['robots'] = []
-      database['total'] = 0
-    end
-  end
-
-  def self.database
-    if ENV["RACK_ENV"] == 'test'
-      @database ||= YAML::Store.new("db/robot_world_test")
-    else
-      @database ||= YAML::Store.new("db/robot_world")
-    end
+    dataset.delete
   end
 
 end

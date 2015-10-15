@@ -1,3 +1,11 @@
 ---
-robots: []
-total: 0
+robots:
+- id: 1
+  name: lkn
+  city: kl
+  state: lkj
+  avatar: lkj
+  birthday: lkjl
+  date_hired: kjl
+  department: j
+total: 1

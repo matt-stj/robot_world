@@ -15,6 +15,7 @@ class NewRobotTest < FeatureTest
 
     within(".directory") do
       assert page.has_content?("Wall-E")
+      assert page.has_content?("Mars")
     end
   end
 

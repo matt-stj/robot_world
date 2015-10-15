@@ -9,7 +9,7 @@ class RobotWorldTest < Minitest::Test
                    "state"       => "Space - version: #{i}",
                    "avatar"      => "Bob - version: #{i}",
                    "birthday"    => "4/5/2004 - version: #{i}",
-                   "date_hired"  => "10/12/15 - version: #{i}",
+                   "date_hired"  => "10/12/2015 - version: #{i}",
                    "department"  => "cleaner - version: #{i}"
                 })
     end
@@ -28,7 +28,7 @@ class RobotWorldTest < Minitest::Test
     assert_equal "Bob - version: 0", robot.avatar
     assert_equal "4/5/2004 - version: 0", robot.birthday
     assert_equal "Mars - version: 0", robot.city
-    assert_equal "10/12/15 - version: 0", robot.date_hired
+    assert_equal "10/12/2015 - version: 0", robot.date_hired
     assert_equal "cleaner - version: 0", robot.department
     assert_equal 1, robot.id
     assert_equal "Space - version: 0", robot.state

@@ -8,7 +8,7 @@ class RobotTest < Minitest::Test
                      "state"       => "Space",
                      "avatar"      => "Bob",
                      "birthday"    => "4/5/2004",
-                     "date_hired"  => "10/12/15",
+                     "date_hired"  => "10/12/2015",
                      "department"  => "cleaner"
                   })
 
@@ -17,7 +17,7 @@ class RobotTest < Minitest::Test
   assert_equal "Space", robot.state
   assert_equal "Bob", robot.avatar
   assert_equal "4/5/2004", robot.birthday
-  assert_equal "10/12/15", robot.date_hired
+  assert_equal "10/12/2015", robot.date_hired
   assert_equal "cleaner", robot.department
 end
 

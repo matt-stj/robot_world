@@ -8,7 +8,19 @@
       </div>
       <div class="col-md-4 well col-md-offset-1"  >
         <h2>Hired By Year:</h2>
-        <h3><%= @hired_by_year %></h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Year</th>
+              <th>Count</th>
+            </tr>
+          </head>
+          <tbody>
+            <tr>
+              <td><%= @hired_by_year.keys %></td>
+              <td><%= @hired_by_year.values %></td>
+            </tr>
+          </tbody>
       </div>
     </div>
   </div>

@@ -41,6 +41,9 @@ class RobotWorldApp < Sinatra::Base
   get '/dashboard' do
     @avg_age = RobotWorld.average_age
     @hired_by_year = RobotWorld.hired_by_year
+    @hired_in_city = RobotWorld.hired_in_city
+    @hired_in_state = RobotWorld.hired_in_state
+    @hired_by_department = RobotWorld.hired_by_department
     erb :dashboard
   end
 

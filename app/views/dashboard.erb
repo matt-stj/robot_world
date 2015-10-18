@@ -6,21 +6,37 @@
         <h2>Average Age:</h2>
         <h3><%= @avg_age %> years old</h3>
       </div>
-      <div class="col-md-4 well col-md-offset-1"  >
+      <div class="col-md-4 well col-md-offset-1">
         <h2>Hired By Year:</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Year</th>
-              <th>Count</th>
-            </tr>
-          </head>
-          <tbody>
-            <tr>
-              <td><%= @hired_by_year.keys %></td>
-              <td><%= @hired_by_year.values %></td>
-            </tr>
-          </tbody>
+        <ul class="pull-left ">
+          <% @hired_by_year.sort.each do |data| %>
+          <li><%= data.first %>: <%= data.last %></li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="col-md-9 well col-md-offset-1 center-text">
+        <h2>Hired in City:</h2>
+        <ul class="pull-left ">
+          <% @hired_in_city.sort.each do |data| %>
+          <li><%= data.first %>: <%= data.last %></li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="col-md-4 well col-md-offset-1">
+        <h2>Hired in State:</h2>
+        <ul class="pull-left ">
+          <% @hired_in_state.sort.each do |data| %>
+          <li><%= data.first %>: <%= data.last %></li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="col-md-4 well col-md-offset-1">
+        <h2>Hired by Deparrment:</h2>
+        <ul class="pull-left ">
+          <% @hired_by_department.sort.each do |data| %>
+          <li><%= data.first %>: <%= data.last %></li>
+          <% end %>
+        </ul>
       </div>
     </div>
   </div>

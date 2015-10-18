@@ -1,5 +1,3 @@
-require 'yaml/store'
-
 class RobotWorld
 
   def self.database
@@ -51,7 +49,33 @@ class RobotWorld
     keys = hired_years.uniq
     hash = {}
     keys.map {|key| hash[key] = hired_years.count(key)}
-    #sort hash by keys
+    hash
+  end
+
+  def self.hired_in_city
+    robots = RobotWorld.all
+    cities = robots.map {|robot| robot.city}
+    keys = cities.uniq
+    hash = {}
+    keys.map {|key| hash[key] = cities.count(key)}
+    hash
+  end
+
+  def self.hired_in_state
+    robots = RobotWorld.all
+    states = robots.map {|robot| robot.state}
+    keys = states.uniq
+    hash = {}
+    keys.map {|key| hash[key] = states.count(key)}
+    hash
+  end
+
+  def self.hired_by_department
+    robots = RobotWorld.all
+    departments = robots.map {|robot| robot.department}
+    keys = departments.uniq
+    hash = {}
+    keys.map {|key| hash[key] = departments.count(key)}
     hash
   end
 
